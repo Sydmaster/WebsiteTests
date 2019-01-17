@@ -1,0 +1,101 @@
+package utilities;
+
+import javax.swing.JOptionPane;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import utilities.Waits;
+
+public class PostMessage
+{
+    /* driver/url variables */
+    private WebDriver driver;
+    private static String slackUrl;
+    private static String channelUrl;
+    private static Waits wait;
+    /* infobox/error messages */
+    private static String titleBar;
+    private static String errorMessage;
+    /* buttons */
+    private static String slackLoginbtnx;
+    private static WebElement slackLoginbtn;
+    private static String slackLogoutbtnid;
+    private static WebElement slackLogoutbtn;
+    /* text fields */
+    private static String slackInputfieldemailx;
+    private static WebElement slackInputfieldemail;
+    private static String slackInputfiledpwx;
+    private static WebElement slackInputfieldpw;
+    private static String slackInputfieldmessagex;
+    private static WebElement slackInputfieldmessage;
+    /* login/registration variables */
+    private static String mailSlack;
+    private static String pwSlack;
+    /* action performer */
+    private static Actions actions;
+
+    public PostMessage(WebDriver driver)
+	  {
+		    this.driver = driver;
+	  }
+	
+	public void postMessage(Exception e)
+	{
+      slackUrl = "whats2doo.slack.com/";								              //stores slack url
+      channelUrl = slackUrl + "messages/CCGEZLD7E/team/UBJEKD8DB/";		//stores channel url
+      wait = new Waits(driver);									                      //wait type: wait for visibility
+      /* infobox/error messages */
+      titleBar = "ERROR";												                      //title for infobox
+      errorMessage = "Bot-Message: EHSCTD Test Case failed! Error Message: ";
+      /* buttons */
+      slackLoginbtnx = "//button[@id='signin_btn']/span[@class='ladda-label']";
+      slackLogoutbtnid = "logout_btn";
+      /* login/registration variables */
+      mailSlack = "sydney@whats2doo.com";
+      pwSlack = "Ilovethiscompany4ever";
+      /* automation start - posting error message in slack */
+		try
+		{
+			    driver.get("https://" + slackUrl);
+			    slackInputfieldemail = wait.waitForVisibility(
+												By.xpath(slackInputfieldemailx), 30);					//initiate element with wait for visibility
+			    slackInputfieldemail.sendKeys(mailSlack);										//enter mail
+			    slackInputfieldpw = wait.waitForVisibility(
+												By.xpath(slackInputfiledpwx), 30);						//initiate element with wait for visibility
+			    slackInputfieldpw.sendKeys(pwSlack);												//enter password
+			    slackLoginbtn = wait.waitForVisibility(
+												By.xpath(slackLoginbtnx), 30);							  //initiate element with wait for visibility
+			    slackLoginbtn.click();																		  //click on element
+			    // Wait until we go to general channel.
+			    wait.waitForVisibility(By.id("C1LTRC73M"), 30);
+			    driver.get("https://" + channelUrl);												//switch to #selenium-bot channel
+			    wait.waitForVisibility(By.id("CCGEZLD7E"), 30);
+			    // Type something
+			    /* action performer */
+			    slackInputfieldmessage = wait.waitForVisibility(
+												By.xpath(slackInputfieldmessagex), 30);
+			    actions.moveToElement(slackInputfieldmessage);							//move to element
+			    actions.click();																			      //click on element
+			    actions.sendKeys(errorMessage + e);													//sending message
+			    actions.sendKeys(Keys.RETURN);															//pressing enter
+			    actions.build().perform();																	//perform action
+			    slackLogoutbtn = wait.waitForVisibility(
+												By.xpath(slackLogoutbtnid), 30);
+			    slackLogoutbtn.click();																		  //click on element
+//			  Thread.sleep(3000);
+//			  driver.quit();
+		}
+		catch (Exception f)
+		{
+			  infoBox(f, titleBar);
+			  System.out.println("dafuck, im triggered in postMessage() " + f);							//console message
+		}
+}
+	
+    public static void infoBox(Exception f, String titleBar)
+    {
+        JOptionPane.showMessageDialog(null, f, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
+}
