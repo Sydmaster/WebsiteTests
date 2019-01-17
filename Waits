@@ -1,0 +1,45 @@
+package utilities;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+public class Waits
+{
+	private WebDriver driver;
+	
+	public Waits(WebDriver driver)
+	{
+		this.driver = driver;
+	}
+	
+	public WebElement waitForVisibility(By locator, int timeout)
+	{
+		WebElement element = null;
+		try
+		{
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		}
+		catch (Exception e)
+		{
+			System.out.println(e);
+		}
+		return element;
+	}
+	
+	public void waitForClickable(By locator, int timeout)
+	{
+		try
+		{
+			WebElement element = null;
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+		}
+		catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+}
