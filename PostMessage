@@ -53,8 +53,8 @@ public void postMessage(Exception e)
       slackLoginbtnx = "//button[@id='signin_btn']/span[@class='ladda-label']";
       slackLogoutbtnid = "logout_btn";
       /* login/registration variables */
-      mailSlack = "sydney@whats2doo.com";
-      pwSlack = "Ilovethiscompany4ever";
+      mailSlack = "sampleMail";
+      pwSlack = "samplePw";
       /* automation start - posting error message in slack */
 		try
 		{
