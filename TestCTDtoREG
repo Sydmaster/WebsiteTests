@@ -106,260 +106,238 @@ public class TestCTDtoREG																				//Test: create todo to registration
 	public void setUp() throws Exception
 	{
 		/* declare variables */
-		koDriver								= "webdriver.chrome.driver";							//kind of driver for driver properties
-		driverPath								= "C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/"
-												+ "chromedriver.exe";									//path of driver; alternativ: 	{C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/chromedriver.exe <-- for windows
+		koDriver = "webdriver.chrome.driver";							//kind of driver for driver properties
+		driverPath = "C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/chromedriver.exe";									//path of driver; alternativ: 	{C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/chromedriver.exe <-- for windows
 																										//								{/usr/lib/chromium-browser/chromedriver} <-- for raspbian}
-		wait									= new Waits(driver);									//wait type: wait for visibility
+		wait = new Waits(driver);									//wait type: wait for visibility
 		System.setProperty(koDriver, driverPath);														//source and kind of driver
-		driver									= new ChromeDriver();									//initialize driver
-		baseUrl									= "dev.whats2doo.com/";									//stores site url
-		emailUrl								= "login.one.com/mail";									//stores mail url
+		driver = new ChromeDriver();									//initialize driver
+		baseUrl = "dev.whats2doo.com/";									//stores site url
+		emailUrl = "login.one.com/mail";									//stores mail url
 		driver.manage().window().maximize();															//maximize window - wichtig!
 		/* buttons */
-		createTodobtnx							= "/html/body/div[1]/div[3]/div/div/div[2]/div/"
-												+ "div[4]/a";											//
-		submitBtnx1								= "//button[@type='submit']";							//
-		submitBtnx2								= "/html/body/div[3]/div[2]/div[2]/div[1]/div/form/"
-												+ "div[3]/button";										//
-		submitBtnx3								= "/html/body/div[1]/div[2]/form/div[3]/button";		//
-		nextBtntodox							= "//*[@id='formtop']/div/form/div/fieldset/div[2]/"
-												+ "button[2]";											//
-		nextBtntodo1x							= "//*[@id='formtop']/div/form/div/fieldset[1]/div[2]/"
-												+ "button[2]";											//
-		nextBtntodo2x							= "/html//div[@id='formtop']//form[@class='multiform']/"
-												+ "div/fieldset[2]/div[@class='multiform_buttons']/"
+		createTodobtnx = "/html/body/div[1]/div[3]/div/div/div[2]/div/div[4]/a";											//
+		submitBtnx1 = "//button[@type='submit']";							//
+		submitBtnx2 = "/html/body/div[3]/div[2]/div[2]/div[1]/div/form/div[3]/button";										//
+		submitBtnx3 = "/html/body/div[1]/div[2]/form/div[3]/button";		//
+		nextBtntodox = "//*[@id='formtop']/div/form/div/fieldset/div[2]/button[2]";											//
+		nextBtntodo1x = "//*[@id='formtop']/div/form/div/fieldset[1]/div[2]/button[2]";											//
+		nextBtntodo2x = "/html//div[@id='formtop']//form[@class='multiform']/div/fieldset[2]/div[@class='multiform_buttons']/"
 												+ "button[.='Weiter']";									//
-		nextBtntodo3x							= "/html//div[@id='formtop']//form[@class='multiform']/"
-												+ "div/fieldset[3]/div[@class='multiform_buttons']/"
+		nextBtntodo3x = "/html//div[@id='formtop']//form[@class='multiform']/div/fieldset[3]/div[@class='multiform_buttons']/"
 												+ "button[.='Weiter']";									//
-		nextBtntodo4x							= "/html//div[@id='formtop']//form[@class='multiform']/"
-												+ "div/fieldset[4]/div[@class='multiform_buttons']/"
+		nextBtntodo4x = "/html//div[@id='formtop']//form[@class='multiform']/div/fieldset[4]/div[@class='multiform_buttons']/"
 												+ "button[.='Weiter']";									//
-		saveBtnx1								= "/html//button[@id='save_btn']";						//
-		saveBtnx2								= "//*[@id='save_btn']";								//
-		registerConid							= "ppRegister";											//
-		mailDivx								= "/html/body/div[2]/div[3]/div[2]/div[2]/div/div/"
-												+ "div[2]/div[2]/div/div/div[3]";						//
-		maildeleteBtnx							= "//div/div/div/div/div/div/div/div/toolbar/"
-												+ "div[@class='toolbar-right']/button/span";			//
-		mailLogoutlt							= "Ausloggen";											//
-		closeBtnid								= "close-btn";											//
-		settingsBtnx							= "//div[@id='mobile_nav']/ul[1]//a[@href='/profile']";	//
-		deleteaccBtnx							= "/html/body/div[1]/div[2]/div[2]/div/div[1]/div/"
-												+ "div[5]/div[2]/a";									//
-		deleteaccModalx							= "//div[@id='deleteAccountModal']/"
-												+ "div[@role='document']//div[@class='modal-footer']/"
-												+ "button[1]";											//
+		saveBtnx1 = "/html//button[@id='save_btn']";						//
+		saveBtnx2 = "//*[@id='save_btn']";								//
+		registerConid = "ppRegister";											//
+		mailDivx = "/html/body/div[2]/div[3]/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div[3]";						//
+		maildeleteBtnx = "//div/div/div/div/div/div/div/div/toolbar/div[@class='toolbar-right']/button/span";			//
+		mailLogoutlt = "Ausloggen";											//
+		closeBtnid = "close-btn";											//
+		settingsBtnx = "//div[@id='mobile_nav']/ul[1]//a[@href='/profile']";	//
+		deleteaccBtnx = "/html/body/div[1]/div[2]/div[2]/div/div[1]/div/div[5]/div[2]/a";									//
+		deleteaccModalx = "//div[@id='deleteAccountModal']/div[@role='document']//div[@class='modal-footer']/button[1]";											//
 		/* labels */
-		selectFirsttodox						= "//*[@id=\"formtop\"]/div/form/div/fieldset/div/"
-												+ "div[2]/div[8]/a/div";								//
-		cssLabel1x								= "/html//div[@id='formtop']/"
-												+ "div[@class='container_center totop']/"
-												+ "form[@class='multiform']//div[@class='field-group']"	
+		selectFirsttodox = "//*[@id='formtop']/div/form/div/fieldset/div/div[2]/div[8]/a/div";								//
+		cssLabel1x = "/html//div[@id='formtop']/div[@class='container_center totop']/form[@class='multiform']//div[@class='field-group']"	
 												+ "/div[1]/label[@class='css-label']";					//
-		cssLabelmultix							= "//*[@id='formtop']/div/form/div/fieldset[4]/"
-												+ "div[1]/div[1]/label";								//
+		cssLabelmultix = "//*[@id='formtop']/div/form/div/fieldset[4]/div[1]/div[1]/label";								//
 		/* links */
-		mailSubmitlt							= "EMAIL-ADRESSE BESTÄTIGEN";							//
+		mailSubmitlt = "EMAIL-ADRESSE BESTÄTIGEN";							//
 		/* text fields */
-		inputFieldsearchid						= "searchbar";											//
-		addressFieldx							= "//input[@id='pac-input']";							//
-		inputFieldspacex						= "//*[@id='formtop']/div/form/div/fieldset[3]/"
-												+ "div[1]/div/input[1]";								//
-		inputFieldinfox							= "//*[@id='formtop']/div/form/div/fieldset[5]/"
-												+ "div[1]/textarea";									//
-		firstNameid								= "first_name";											//
-		lastNameid								= "last_name";											//
-		registerInputfieldmailid				= "InputEmail";											//
-		registerInputfieldpwid					= "InputPassword";										//
-		loginInputfieldmailid					= "exampleInputEmail1";									//
-		loginInputfieldpwx1						= "/html//input[@id='exampleInputPassword1']";			//
-		loginInputfieldpwx2						= "//*[@id=\"exampleInputPassword1\"]";					//
-		mailLogininputfieldmailx				= "/html/body/div[3]/div[2]/div[2]/div[1]/div/form/"
-												+ "input[1]";											//
-		mailLogininputfieldpwx					= "/html/body/div[3]/div[2]/div[2]/div[1]/div/form/"
-												+ "input[2]";											//
+		inputFieldsearchid = "searchbar";											//
+		addressFieldx = "//input[@id='pac-input']";							//
+		inputFieldspacex = "//*[@id='formtop']/div/form/div/fieldset[3]/div[1]/div/input[1]";								//
+		inputFieldinfox = "//*[@id='formtop']/div/form/div/fieldset[5]/div[1]/textarea";									//
+		firstNameid = "first_name";											//
+		lastNameid = "last_name";											//
+		registerInputfieldmailid = "InputEmail";											//
+		registerInputfieldpwid = "InputPassword";										//
+		loginInputfieldmailid = "exampleInputEmail1";									//
+		loginInputfieldpwx1 = "/html//input[@id='exampleInputPassword1']";			//
+		loginInputfieldpwx2 = "//*[@id=\"exampleInputPassword1\"]";					//
+		mailLogininputfieldmailx = "/html/body/div[3]/div[2]/div[2]/div[1]/div/form/input[1]";											//
+		mailLogininputfieldpwx = "/html/body/div[3]/div[2]/div[2]/div[1]/div/form/input[2]";											//
 		/* login/registration variables */
-		firstNamev								= "Gordon";												//
-		lastNamev								= "Freeman";											//
-		testMailv								= "sampleMail";								//
-		pwv										= "samplePw";											//
+		firstNamev = "Gordon";												//
+		lastNamev = "Freeman";											//
+		testMailv = "sampleMail";								//
+		pwv = "samplePw";											//
 		/* example variables */
-		selectTodov								= "Gartenarbeit";										//
-		exampleAddress							= "Philip-Rosenthal-Platz 1, 95100 Selb";				//
-		inputFieldspacev						= "30";													//
-		exampleInputfieldinfov					= "bitte auch Rasenkanten";								//
+		selectTodov = "Gartenarbeit";										//
+		exampleAddress = "Philip-Rosenthal-Platz 1, 95100 Selb";				//
+		inputFieldspacev = "30";													//
+		exampleInputfieldinfov = "bitte auch Rasenkanten";								//
 	}
 	
 	@Test																								//JUnit execute test
 	public void Ctdtoreg()																				//static for app
-	{
-//..................................................................................................	//max width	
+	{	
 		try
 		{
 			/* automation start - create ToDo*/
 			driver.get("http://" + baseUrl);															//opens site
-			createTodobtn						= wait.waitForVisibility(
-												By.xpath(createTodobtnx), 30);							//initiate element with wait for visibility
+			createTodobtn = wait.waitForVisibility(
+					By.xpath(createTodobtnx), 30);							//initiate element with wait for visibility
 			createTodobtn.click();																		//click on element
-			inputFieldsearch					= wait.waitForVisibility(
-												By.id(inputFieldsearchid), 30);							//initiate element with wait for visibility
+			inputFieldsearch = wait.waitForVisibility(
+					By.id(inputFieldsearchid), 30);							//initiate element with wait for visibility
 			inputFieldsearch.sendKeys(selectTodov);														//sending string (no typing!)
 			
-			selectFirsttodo						= wait.waitForVisibility(
-												By.xpath(selectFirsttodox), 30);						//initiate element with wait for visibility
+			selectFirsttodo = wait.waitForVisibility(
+					By.xpath(selectFirsttodox), 30);						//initiate element with wait for visibility
 			selectFirsttodo.click();																	//click on element
-		    cssLabel1							= wait.waitForVisibility(
-												By.xpath(cssLabel1x), 30);								//initiate element with wait for visibility
-		    cssLabel1.click();																			//click on element
-		    nextBtntodo							= wait.waitForVisibility(
-												By.xpath(nextBtntodox), 30);							//initiate element with wait for visibility
-		    nextBtntodo.click();																		//click on element
-		    addressField						= wait.waitForVisibility(
-												By.xpath(addressFieldx), 30);							//initiate element with wait for visibility
-		    addressField.sendKeys(exampleAddress);														//sending string (no typing!)
-		    Thread.sleep(1000);																			//pause execution of current thread -  wichtig!
-		    addressField.sendKeys(Keys.ENTER);															//sending key execution		    																						
-		    Thread.sleep(1000);																			//pause execution of current thread -  wichtig!
-		    nextBtntodo1						= wait.waitForVisibility(
-												By.xpath(nextBtntodo1x), 30);							//initiate element with wait for visibility
-		    nextBtntodo1.click();																		//click on element
-		    nextBtntodo2						= wait.waitForVisibility(
-												By.xpath(nextBtntodo2x), 30);							//initiate element with wait for visibility
-		    nextBtntodo2.click();																		//click on element
-		    inputFieldspace						= wait.waitForVisibility(
-												By.xpath(inputFieldspacex), 30);						//initiate element with wait for visibility
-		    inputFieldspace.sendKeys(inputFieldspacev);													//sending string (no typing!)
-		    Thread.sleep(1000);																			//pause execution of current thread
-		    nextBtntodo3						= wait.waitForVisibility(
-												By.xpath(nextBtntodo3x), 30);							//initiate element with wait for visibility
-		    nextBtntodo3.click();																		//click on element
-		    cssLabelmulti						= wait.waitForVisibility(
-												By.xpath(cssLabelmultix), 30);							//initiate element with wait for visibility
-		    cssLabelmulti.click();																		//click on element
-		    nextBtntodo4						= wait.waitForVisibility(
-												By.xpath(nextBtntodo4x), 30);							//initiate element with wait for visibility
-		    nextBtntodo4.click();																		//click on element
-		    inputFieldinfo						= wait.waitForVisibility(
-												By.xpath(inputFieldinfox), 30);							//initiate element with wait for visibility
-		    inputFieldinfo.sendKeys(exampleInputfieldinfov);											//sending string (no typing!)
-		    Thread.sleep(1000);																			//pause execution of current thread
-		    saveBtn								= wait.waitForVisibility(
-												By.xpath(saveBtnx1), 30);								//initiate element with wait for visibility
-		    saveBtn.click();																			//click on element
-		    /* todo done */
-		    /* register */
-		    firstName							= wait.waitForVisibility(
-												By.id(firstNameid), 30);								//initiate element with wait for visibility
-		    firstName.sendKeys(firstNamev);																//sending string (no typing!)
-		    lastName							= wait.waitForVisibility(
-												By.id(lastNameid), 30);									//initiate element with wait for visibility
-		    lastName.sendKeys(lastNamev);																//sending string (no typing!)
-		    registerInputfieldmail				= wait.waitForVisibility(
-												By.id(registerInputfieldmailid), 30);					//initiate element with wait for visibility
-		    registerInputfieldmail.sendKeys(testMailv);													//sending string (no typing!)
-		    registerInputfieldpw				= wait.waitForVisibility(
-												By.id(registerInputfieldpwid), 30);						//initiate element with wait for visibility
-		    registerInputfieldpw.sendKeys(pwv);															//sending string (no typing!)
-		    Thread.sleep(1000);																			//pause execution of current thread
-		    registerCon							= wait.waitForVisibility(
-												By.id(registerConid), 30);								//initiate element with wait for visibility
-		    registerCon.click();																		//click on element
-		    saveBtn								= wait.waitForVisibility(
-												By.xpath(saveBtnx2), 30);								//initiate element with wait for visibility
-		    saveBtn.click();																			//click on element
-		    /* registration done */
-		    /* try to login without register confirmation */
-		    loginInputfieldmail					= wait.waitForVisibility(
-												By.id(loginInputfieldmailid), 30);						//initiate element with wait for visibility
-		    loginInputfieldmail.sendKeys(testMailv);													//sending string (no typing!)
-		    Thread.sleep(1000);																			//pause execution of current thread
-		    loginInputfieldpw					= wait.waitForVisibility(
-												By.xpath(loginInputfieldpwx1),30);						//initiate element with wait for visibility
-		    loginInputfieldpw.sendKeys(pwv);															//sending string (no typing!)
-		    Thread.sleep(1000);																			//pause execution of current thread
-			submitBtn							= wait.waitForVisibility(
-												By.xpath(submitBtnx1), 30);								//initiate element with wait for visibility
-		    submitBtn.click();																			//click on element
-		    /* login attempt done */
-		    /* look up email and submit*/
-		    winHandleBefore = driver.getWindowHandle();													//stores current tab
-		    driver.get("https://" + emailUrl);															//opens lockbox
-		    mailLogininputfieldmail				= wait.waitForVisibility(
-												By.xpath(mailLogininputfieldmailx), 30);				//initiate element with wait for visibility
-		    mailLogininputfieldmail.sendKeys(testMailv);												//sending string (no typing!)
-		    mailLogininputfieldpw				= wait.waitForVisibility(
-												By.xpath(mailLogininputfieldpwx), 30);					//initiate element with wait for visibility
-		    mailLogininputfieldpw.sendKeys(pwv);														//sending string (no typing!)
-		    Thread.sleep(1000);																			//pause execution of current thread
-			submitBtn							= wait.waitForVisibility(
-												By.xpath(submitBtnx2), 30);								//initiate element with wait for visibility
-		    submitBtn.click();																			//click on element
-		    Thread.sleep(1000);
-		    driver.navigate().refresh();																//refreshing actual site
-		    mailDiv								= wait.waitForVisibility(
-												By.xpath(mailDivx), 30);								//initiate element with wait for visibility
-		    mailDiv.click();																			//click on element
-		    mailSubmit							= wait.waitForVisibility(
-												By.linkText(mailSubmitlt),30);							//initiate element with wait for visibility
-		    mailSubmit.click();																			//click on element
-		    /* looking up mail and submit done */
-		    /* switch to new opened window */
-		    for(String winHandle : driver.getWindowHandles())
-		    {
-		        driver.switchTo().window(winHandle);
-		    }
-		    /* switch done */
-		    /* login after submmit email */
-		    driver.navigate().refresh();
-		    loginInputfieldpw					= wait.waitForVisibility(
-												By.xpath(loginInputfieldpwx2), 30);						//initiate element with wait for visibility
-		    loginInputfieldpw.sendKeys(pwv);															//sending string (no typing!)
-		    Thread.sleep(1000);																			//pause execution of current thread
-			submitBtn							= wait.waitForVisibility(
-												By.xpath(submitBtnx3), 30);								//initiate element with wait for visibility
-		    submitBtn.click();																			//click on element
-		    /* submit email and login done */
-		    closeBtn							= wait.waitForVisibility(
-												By.id(closeBtnid), 30);									//initiate element with wait for visibility
-		    closeBtn.click();																			//click on element
+		    	cssLabel1 = wait.waitForVisibility(
+					By.xpath(cssLabel1x), 30);								//initiate element with wait for visibility
+		    	cssLabel1.click();																			//click on element
+		    	nextBtntodo = wait.waitForVisibility(
+					By.xpath(nextBtntodox), 30);							//initiate element with wait for visibility
+		    	nextBtntodo.click();																		//click on element
+		    	addressField = wait.waitForVisibility(
+					By.xpath(addressFieldx), 30);							//initiate element with wait for visibility
+			addressField.sendKeys(exampleAddress);														//sending string (no typing!)
+		    	Thread.sleep(1000);																			//pause execution of current thread -  wichtig!
+		    	addressField.sendKeys(Keys.ENTER);															//sending key execution		    																						
+		    	Thread.sleep(1000);																			//pause execution of current thread -  wichtig!
+			nextBtntodo1 = wait.waitForVisibility(
+					By.xpath(nextBtntodo1x), 30);							//initiate element with wait for visibility
+		    	nextBtntodo1.click();																		//click on element
+		    	nextBtntodo2 = wait.waitForVisibility(
+					By.xpath(nextBtntodo2x), 30);							//initiate element with wait for visibility
+		    	nextBtntodo2.click();																		//click on element
+		   	inputFieldspace = wait.waitForVisibility(
+					By.xpath(inputFieldspacex), 30);						//initiate element with wait for visibility
+		   	inputFieldspace.sendKeys(inputFieldspacev);													//sending string (no typing!)
+		    	Thread.sleep(1000);																			//pause execution of current thread
+		    	nextBtntodo3 = wait.waitForVisibility(
+					By.xpath(nextBtntodo3x), 30);							//initiate element with wait for visibility
+		    	nextBtntodo3.click();																		//click on element
+		    	cssLabelmulti = wait.waitForVisibility(
+					By.xpath(cssLabelmultix), 30);							//initiate element with wait for visibility
+		    	cssLabelmulti.click();																		//click on element
+		    	nextBtntodo4 = wait.waitForVisibility(
+					By.xpath(nextBtntodo4x), 30);							//initiate element with wait for visibility
+		    	nextBtntodo4.click();																		//click on element
+		    	inputFieldinfo = wait.waitForVisibility(
+					By.xpath(inputFieldinfox), 30);							//initiate element with wait for visibility
+		    	inputFieldinfo.sendKeys(exampleInputfieldinfov);											//sending string (no typing!)
+		    	Thread.sleep(1000);																			//pause execution of current thread
+		    	saveBtn = wait.waitForVisibility(
+					By.xpath(saveBtnx1), 30);								//initiate element with wait for visibility
+		    	saveBtn.click();																			//click on element
+		    	/* todo done */
+		    	/* register */
+		    	firstName = wait.waitForVisibility(
+					By.id(firstNameid), 30);								//initiate element with wait for visibility
+		    	firstName.sendKeys(firstNamev);																//sending string (no typing!)
+		    	lastName = wait.waitForVisibility(
+					By.id(lastNameid), 30);									//initiate element with wait for visibility
+			lastName.sendKeys(lastNamev);																//sending string (no typing!)
+		    	registerInputfieldmail = wait.waitForVisibility(
+					By.id(registerInputfieldmailid), 30);					//initiate element with wait for visibility
+		   	registerInputfieldmail.sendKeys(testMailv);													//sending string (no typing!)
+		    	registerInputfieldpw = wait.waitForVisibility(
+					By.id(registerInputfieldpwid), 30);						//initiate element with wait for visibility
+		    	registerInputfieldpw.sendKeys(pwv);															//sending string (no typing!)
+		    	Thread.sleep(1000);																			//pause execution of current thread
+		    	registerCon = wait.waitForVisibility(
+					By.id(registerConid), 30);								//initiate element with wait for visibility
+		    	registerCon.click();																		//click on element
+		    	saveBtn = wait.waitForVisibility(
+					By.xpath(saveBtnx2), 30);								//initiate element with wait for visibility
+		    	saveBtn.click();																			//click on element
+		    	/* registration done */
+		    	/* try to login without register confirmation */
+		    	loginInputfieldmail = wait.waitForVisibility(
+					By.id(loginInputfieldmailid), 30);						//initiate element with wait for visibility
+		    	loginInputfieldmail.sendKeys(testMailv);													//sending string (no typing!)
+		    	Thread.sleep(1000);																			//pause execution of current thread
+		    	loginInputfieldpw = wait.waitForVisibility(
+					By.xpath(loginInputfieldpwx1),30);						//initiate element with wait for visibility
+		    	loginInputfieldpw.sendKeys(pwv);															//sending string (no typing!)
+		    	Thread.sleep(1000);																			//pause execution of current thread
+			submitBtn = wait.waitForVisibility(
+					By.xpath(submitBtnx1), 30);								//initiate element with wait for visibility
+		    	submitBtn.click();																			//click on element
+		    	/* login attempt done */
+		    	/* look up email and submit*/
+		    	winHandleBefore = driver.getWindowHandle();													//stores current tab
+		    	driver.get("https://" + emailUrl);															//opens lockbox
+		    	mailLogininputfieldmail = wait.waitForVisibility(
+					By.xpath(mailLogininputfieldmailx), 30);				//initiate element with wait for visibility
+		    	mailLogininputfieldmail.sendKeys(testMailv);												//sending string (no typing!)
+		    	mailLogininputfieldpw = wait.waitForVisibility(
+					By.xpath(mailLogininputfieldpwx), 30);					//initiate element with wait for visibility
+		    	mailLogininputfieldpw.sendKeys(pwv);														//sending string (no typing!)
+		    	Thread.sleep(1000);																			//pause execution of current thread
+			submitBtn = wait.waitForVisibility(
+					By.xpath(submitBtnx2), 30);								//initiate element with wait for visibility
+		    	submitBtn.click();																			//click on element
+		    	Thread.sleep(1000);
+		    	driver.navigate().refresh();																//refreshing actual site
+		    	mailDiv = wait.waitForVisibility(
+					By.xpath(mailDivx), 30);								//initiate element with wait for visibility
+		    	mailDiv.click();																			//click on element
+		    	mailSubmit = wait.waitForVisibility(
+					By.linkText(mailSubmitlt),30);							//initiate element with wait for visibility
+		    	mailSubmit.click();																			//click on element
+		    	/* looking up mail and submit done */
+		    	/* switch to new opened window */
+		    	for(String winHandle : driver.getWindowHandles())
+		    	{
+		       		driver.switchTo().window(winHandle);
+		    	}
+		    	/* switch done */
+		    	/* login after submmit email */
+		    	driver.navigate().refresh();
+		    	loginInputfieldpw = wait.waitForVisibility(
+					By.xpath(loginInputfieldpwx2), 30);						//initiate element with wait for visibility
+		    	loginInputfieldpw.sendKeys(pwv);															//sending string (no typing!)
+		    	Thread.sleep(1000);																			//pause execution of current thread
+			submitBtn = wait.waitForVisibility(
+					By.xpath(submitBtnx3), 30);								//initiate element with wait for visibility
+		    	submitBtn.click();																			//click on element
+		    	/* submit email and login done */
+		    	closeBtn = wait.waitForVisibility(
+					By.id(closeBtnid), 30);									//initiate element with wait for visibility
+		    	closeBtn.click();																			//click on element
 			/* ToDo archivieren <-- no todo creation in dev */
-//		    myDisplay							= wait.waitForVisibility(
-//												By.xpath(myDisplayx), 30);								//initiate element with wait for visibility
+//		    	myDisplay = wait.waitForVisibility(
+//					By.xpath(myDisplayx), 30);								//initiate element with wait for visibility
 //			myDisplay.click();																			//click on element
-//			firstTodo							= wait.waitForVisibility(
-//												By.xpath(firstTodox), 30);								//initiate element with wait for visibility
+//			firstTodo = wait.waitForVisibility(
+//					By.xpath(firstTodox), 30);								//initiate element with wait for visibility
 //			firstTodo.click();																			//click on element
-//			archiveBtn							= wait.waitForVisibility(
-//												By.xpath(archiveBtnx), 30);								//initiate element with wait for visibility
+//			archiveBtn = wait.waitForVisibility(
+//					By.xpath(archiveBtnx), 30);								//initiate element with wait for visibility
 //			archiveBtn.click();																			//click on element
-//			archiveModal						= wait.waitForVisibility(
-//												By.xpath(archiveModalx), 30);							//initiate element with wait for visibility
+//			archiveModal = wait.waitForVisibility(
+//					By.xpath(archiveModalx), 30);							//initiate element with wait for visibility
 //			archiveModal.click();																		//click on element
-//		    Thread.sleep(3000);																			//pause execution of current thread
-		    /* archive todo done */
-		    /* delete acc*/
-		    settingsBtn							= wait.waitForVisibility(
-												By.xpath(settingsBtnx), 30);							//initiate element with wait for visibility
-		    settingsBtn.click();																		//click on element
-		    deleteaccBtn						= wait.waitForVisibility(
-												By.xpath(deleteaccBtnx), 30);							//initiate element with wait for visibility
-		    deleteaccBtn.click();																		//click on element
-		    deleteaccModal						= wait.waitForVisibility(
-												By.xpath(deleteaccModalx), 30);							//initiate element with wait for visibility
+//		    	Thread.sleep(3000);																			//pause execution of current thread
+		   	/* archive todo done */
+		    	/* delete acc*/
+		   	settingsBtn = wait.waitForVisibility(
+					By.xpath(settingsBtnx), 30);							//initiate element with wait for visibility
+		    	settingsBtn.click();																		//click on element
+		    	deleteaccBtn = wait.waitForVisibility(
+					By.xpath(deleteaccBtnx), 30);							//initiate element with wait for visibility
+		    	deleteaccBtn.click();																		//click on element
+		    	deleteaccModal = wait.waitForVisibility(
+					By.xpath(deleteaccModalx), 30);							//initiate element with wait for visibility
 			deleteaccModal.click();																		//click on element
 			Thread.sleep(1000);																			//pause execution of current thread
 			/* deleting acc done */
 			/* switch tab, delete first mail and logout */
 			driver.switchTo().window(winHandleBefore);													//switch to stored winHandle
-		    maildeleteBtn						= wait.waitForVisibility(
-												By.xpath(maildeleteBtnx), 30);							//initiate element with wait for visibility
-		    maildeleteBtn.click();																		//click on element
-		    Thread.sleep(1000);
-		    mailLogout							= wait.waitForVisibility(
-												By.linkText(mailLogoutlt), 30);							//initiate element with wait for visibility
-		    mailLogout.click();																			//click on element
+		   	maildeleteBtn = wait.waitForVisibility(
+					By.xpath(maildeleteBtnx), 30);							//initiate element with wait for visibility
+		    	maildeleteBtn.click();																		//click on element
+		    	Thread.sleep(1000);
+		    	mailLogout = wait.waitForVisibility(
+					By.linkText(mailLogoutlt), 30);							//initiate element with wait for visibility
+		    	mailLogout.click();																			//click on element
 		}
 		catch (Exception e)
 		{
@@ -372,7 +350,7 @@ public class TestCTDtoREG																				//Test: create todo to registration
 	@After																								//JUnit execute after test
 	public void endTest() throws Exception
 	{
-	    Thread.sleep(1000);
+	   	Thread.sleep(1000);
 		driver.quit();																					//closing instance
 	}
 }
