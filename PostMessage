@@ -36,16 +36,16 @@ public class PostMessage
     /* action performer */
     private static Actions actions;
 
-    public PostMessage(WebDriver driver)
-	  {
-		    this.driver = driver;
-	  }
+public PostMessage(WebDriver driver)
+{
+	this.driver = driver;
+}
 	
-	public void postMessage(Exception e)
-	{
-      slackUrl = "whats2doo.slack.com/";								              //stores slack url
-      channelUrl = slackUrl + "messages/CCGEZLD7E/team/UBJEKD8DB/";		//stores channel url
-      wait = new Waits(driver);									                      //wait type: wait for visibility
+public void postMessage(Exception e)
+{
+      slackUrl = "whats2doo.slack.com/";						//stores slack url
+      channelUrl = slackUrl + "messages/CCGEZLD7E/team/UBJEKD8DB/";			//stores channel url
+      wait = new Waits(driver);								//wait type: wait for visibility
       /* infobox/error messages */
       titleBar = "ERROR";												                      //title for infobox
       errorMessage = "Bot-Message: EHSCTD Test Case failed! Error Message: ";
@@ -58,44 +58,44 @@ public class PostMessage
       /* automation start - posting error message in slack */
 		try
 		{
-			    driver.get("https://" + slackUrl);
-			    slackInputfieldemail = wait.waitForVisibility(
-												By.xpath(slackInputfieldemailx), 30);					//initiate element with wait for visibility
-			    slackInputfieldemail.sendKeys(mailSlack);										//enter mail
-			    slackInputfieldpw = wait.waitForVisibility(
-												By.xpath(slackInputfiledpwx), 30);						//initiate element with wait for visibility
-			    slackInputfieldpw.sendKeys(pwSlack);												//enter password
-			    slackLoginbtn = wait.waitForVisibility(
-												By.xpath(slackLoginbtnx), 30);							  //initiate element with wait for visibility
-			    slackLoginbtn.click();																		  //click on element
-			    // Wait until we go to general channel.
-			    wait.waitForVisibility(By.id("C1LTRC73M"), 30);
-			    driver.get("https://" + channelUrl);												//switch to #selenium-bot channel
-			    wait.waitForVisibility(By.id("CCGEZLD7E"), 30);
-			    // Type something
-			    /* action performer */
-			    slackInputfieldmessage = wait.waitForVisibility(
-												By.xpath(slackInputfieldmessagex), 30);
-			    actions.moveToElement(slackInputfieldmessage);							//move to element
-			    actions.click();																			      //click on element
-			    actions.sendKeys(errorMessage + e);													//sending message
-			    actions.sendKeys(Keys.RETURN);															//pressing enter
-			    actions.build().perform();																	//perform action
-			    slackLogoutbtn = wait.waitForVisibility(
-												By.xpath(slackLogoutbtnid), 30);
-			    slackLogoutbtn.click();																		  //click on element
-//			  Thread.sleep(3000);
-//			  driver.quit();
+			driver.get("https://" + slackUrl);
+			slackInputfieldemail = wait.waitForVisibility(
+						By.xpath(slackInputfieldemailx), 30);	//initiate element with wait for visibility
+			slackInputfieldemail.sendKeys(mailSlack);										//enter mail
+			slackInputfieldpw = wait.waitForVisibility(
+						By.xpath(slackInputfiledpwx), 30);	//initiate element with wait for visibility
+			slackInputfieldpw.sendKeys(pwSlack);												//enter password
+			slackLoginbtn = wait.waitForVisibility(
+						By.xpath(slackLoginbtnx), 30);							  //initiate element with wait for visibility
+			slackLoginbtn.click();																		  //click on element
+			// Wait until we go to general channel.
+			wait.waitForVisibility(By.id("C1LTRC73M"), 30);
+			driver.get("https://" + channelUrl);												//switch to #selenium-bot channel
+			wait.waitForVisibility(By.id("CCGEZLD7E"), 30);
+			// Type something
+			/* action performer */
+			slackInputfieldmessage = wait.waitForVisibility(
+						By.xpath(slackInputfieldmessagex), 30);
+			actions.moveToElement(slackInputfieldmessage);			//move to element
+			actions.click();																			      //click on element
+			actions.sendKeys(errorMessage + e);													//sending message
+			actions.sendKeys(Keys.RETURN);															//pressing enter
+			actions.build().perform();																	//perform action
+			slackLogoutbtn = wait.waitForVisibility(
+						By.xpath(slackLogoutbtnid), 30);
+			slackLogoutbtn.click();																		  //click on element
+//			Thread.sleep(3000);
+//			driver.quit();
 		}
 		catch (Exception f)
 		{
-			  infoBox(f, titleBar);
-			  System.out.println("dafuck, im triggered in postMessage() " + f);							//console message
+			infoBox(f, titleBar);
+			System.out.println("dafuck, im triggered in postMessage() " + f);							//console message
 		}
 }
 	
     public static void infoBox(Exception f, String titleBar)
     {
-        JOptionPane.showMessageDialog(null, f, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    	JOptionPane.showMessageDialog(null, f, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
 }
