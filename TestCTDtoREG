@@ -1,9 +1,16 @@
 package sydtest3_CTDtoREG;
 
-import org.openqa.selenium.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.After;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.*;
-import utilities.*;																						//stored procedures
+import utilities.Infobox;
+import utilities.PostMessage;
+import utilities.Waits;																						//stored procedures
 
 public class TestCTDtoREG																				//Test: create todo to registration
 {
@@ -106,14 +113,14 @@ public class TestCTDtoREG																				//Test: create todo to registration
 	public void setUp() throws Exception
 	{
 		/* declare variables */
-		koDriver = "webdriver.chrome.driver";							//kind of driver for driver properties
+		koDriver = "webdriver.chrome.driver";								//kind of driver for driver properties
 		driverPath = "C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/chromedriver.exe";									//path of driver; alternativ: 	{C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/chromedriver.exe <-- for windows
 																										//								{/usr/lib/chromium-browser/chromedriver} <-- for raspbian}
 		wait = new Waits(driver);									//wait type: wait for visibility
 		System.setProperty(koDriver, driverPath);														//source and kind of driver
 		driver = new ChromeDriver();									//initialize driver
 		baseUrl = "dev.whats2doo.com/";									//stores site url
-		emailUrl = "login.one.com/mail";									//stores mail url
+		emailUrl = "login.one.com/mail";								//stores mail url
 		driver.manage().window().maximize();															//maximize window - wichtig!
 		/* buttons */
 		createTodobtnx = "/html/body/div[1]/div[3]/div/div/div[2]/div/div[4]/a";											//
@@ -128,14 +135,14 @@ public class TestCTDtoREG																				//Test: create todo to registration
 												+ "button[.='Weiter']";									//
 		nextBtntodo4x = "/html//div[@id='formtop']//form[@class='multiform']/div/fieldset[4]/div[@class='multiform_buttons']/"
 												+ "button[.='Weiter']";									//
-		saveBtnx1 = "/html//button[@id='save_btn']";						//
+		saveBtnx1 = "/html//button[@id='save_btn']";							//
 		saveBtnx2 = "//*[@id='save_btn']";								//
-		registerConid = "ppRegister";											//
-		mailDivx = "/html/body/div[2]/div[3]/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div[3]";						//
+		registerConid = "ppRegister";									//
+		mailDivx = "/html/body/div[2]/div[3]/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div[3]";	//
 		maildeleteBtnx = "//div/div/div/div/div/div/div/div/toolbar/div[@class='toolbar-right']/button/span";			//
-		mailLogoutlt = "Ausloggen";											//
-		closeBtnid = "close-btn";											//
-		settingsBtnx = "//div[@id='mobile_nav']/ul[1]//a[@href='/profile']";	//
+		mailLogoutlt = "Ausloggen";									//
+		closeBtnid = "close-btn";									//
+		settingsBtnx = "//div[@id='mobile_nav']/ul[1]//a[@href='/profile']";				//
 		deleteaccBtnx = "/html/body/div[1]/div[2]/div[2]/div/div[1]/div/div[5]/div[2]/a";									//
 		deleteaccModalx = "//div[@id='deleteAccountModal']/div[@role='document']//div[@class='modal-footer']/button[1]";											//
 		/* labels */
