@@ -81,7 +81,7 @@ public class CallTests
 			    	{
 			    		failure = true;
 					driver.quit();
-					pm.postMessage(e);
+					pm.postMessage(TestCTDtoREG.exception);
 			    	}
 			}
 			catch (Exception e)
