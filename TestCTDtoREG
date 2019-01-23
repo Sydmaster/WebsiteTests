@@ -384,7 +384,7 @@ public class TestCTDtoREG																				//Test: create todo to registration
 			failure = true;
 			ib.infoBox(e);																				//infobox for pausing while test crash
 			System.out.println("im triggered in CTDtoREG " + e);								//console message
-			pm.postMessage(e);																			//posts message in slack
+			pm.postMessage(e.toString());																			//posts message in slack
 		}
 	}
 		
