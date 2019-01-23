@@ -90,7 +90,7 @@ public void postMessage(String errorMessage)
 		catch (Exception f)
 		{
 			infoBox(f, titleBar);
-			System.out.println("dafuck, im triggered in postMessage() " + f);							//console message
+			System.out.println("im triggered in postMessage() " + f);							//console message
 		}
 }
 	
