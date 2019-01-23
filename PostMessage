@@ -41,7 +41,7 @@ public PostMessage(WebDriver driver)
 	this.driver = driver;
 }
 	
-public void postMessage(Exception e)
+public void postMessage(String errorMessage)
 {
       slackUrl = "whats2doo.slack.com/";						//stores slack url
       channelUrl = slackUrl + "messages/CCGEZLD7E/team/UBJEKD8DB/";			//stores channel url
@@ -78,7 +78,7 @@ public void postMessage(Exception e)
 						By.xpath(slackInputfieldmessagex), 30);
 			actions.moveToElement(slackInputfieldmessage);			//move to element
 			actions.click();																			      //click on element
-			actions.sendKeys(errorMessage + e);													//sending message
+			actions.sendKeys(errorMessage);													//sending message
 			actions.sendKeys(Keys.RETURN);															//pressing enter
 			actions.build().perform();																	//perform action
 			slackLogoutbtn = wait.waitForVisibility(
