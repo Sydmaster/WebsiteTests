@@ -33,8 +33,6 @@ public class CallTests
 				+ "chromedriver.exe";									//path of driver; alternativ: 	{C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/chromedriver.exe <-- for windows
 																										//								{/usr/lib/chromium-browser/chromedriver} <-- for raspbian}
 		System.setProperty(koDriver, driverPath);														//source and kind of driver
-		driver = new ChromeDriver();									//initialize driver
-		driver.quit();
 		pm = new PostMessage(driver);
 		ib = new Infobox();
 		t1 = new TestEHSCTD();
