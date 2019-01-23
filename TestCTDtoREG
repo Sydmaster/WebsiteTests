@@ -18,7 +18,7 @@ import utilities.Waits;
 public class TestCTDtoREG																				//Test: create todo to registration
 {
 	/* driver/url variables */
-	private static WebDriver driver;
+	WebDriver driver;
 	private static String koDriver;
 	private static String driverPath;
 	private static String baseUrl;
@@ -114,6 +114,11 @@ public class TestCTDtoREG																				//Test: create todo to registration
 	private static String exampleInputfieldinfov;
 	/* tabs */
 	private static String winHandleBefore;																//variable for a tab
+	
+	public TestCTDtoREG(WebDriver driver)
+	{
+		this.driver = driver;
+	}
 	
 	@Before																								//JUnit execute before test
 	public void setUp() throws Exception
