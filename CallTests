@@ -1,5 +1,8 @@
 package callTests;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import silencio_tryagain_FBREG.TestFBREG;
 import sydtest3_CTDtoREG.TestCTDtoREG;
 import sydtest5_EHSCTD.TestEHSCTD;
@@ -10,56 +13,83 @@ import utilities.PostMessage;
 public class CallTests
 {
 	private static Boolean failure;
+	private static String koDriver;
+	private static String driverPath;
+	private static WebDriver driver;
 	private static PostMessage pm;
 	private static Infobox ib;
+	@SuppressWarnings("unused")
 	private static TestEHSCTD t1;
 	private static TestCTDtoREG t2;
+	@SuppressWarnings("unused")
 	private static TestFBREG t3;
+	@SuppressWarnings("unused")
 	private static TestUIA t4;
 	
 	public static void main(String[] args)
 	{
+//..................................................................................................	//max width
+		
 		failure = false;
+		koDriver = "webdriver.chrome.driver";							//kind of driver for driver properties
+		driverPath = "C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/"
+				+ "chromedriver.exe";									//path of driver; alternativ: 	{C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/chromedriver.exe <-- for windows
+																										//								{/usr/lib/chromium-browser/chromedriver} <-- for raspbian}
+		System.setProperty(koDriver, driverPath);														//source and kind of driver
+		driver = new ChromeDriver();									//initialize driver
+		driver.quit();
+		pm = new PostMessage(driver);
+		ib = new Infobox();
+		t1 = new TestEHSCTD();
+		t2 = new TestCTDtoREG();
+		t3 = new TestFBREG();
+		t4 = new TestUIA();
 		
 		while(failure == false)
 		{
 			try
 			{
 			/*#####################################
-			############	TEST 1	#################
+			############	TEST 1	###############
 			#####################################*/
 			//edit helper settings and create todo														//todo wird in dev nicht erstellt
-				t1.setUp();																				              //setup test case
-				t1.Ehsctd();																			              //doing test
-				t1.endTest();																			              //quitting browser and closing driver instance
+				t1.setUp();																				//setup test case
+				t1.Ehsctd();																			//doing test
+				t1.endTest();																			//quitting browser and closing driver instance
 			/*#####################################
-			############	TEST 2	#################
+			############	TEST 2	###############
 			#####################################*/
-			//create todo into registration															    	//todo wird in dev nicht erstellt
-				t2.setUp();																				              //setup test case
-				t2.Ctdtoreg();																			            //doing test
-				t2.endTest();																			              //quitting browser and closing driver instance
+			//create todo into registration																//todo wird in dev nicht erstellt
+				t2.setUp();																				//setup test case
+				t2.Ctdtoreg();																			//doing test
+				t2.endTest();																			//quitting browser and closing driver instance
 			/*#####################################
-			############	TEST 3	#################
+			############	TEST 3	###############
 			#####################################*/
 			//facebook registration/login
-				t3.setUp();																				              //setup test case
-				t3.Fbreg();																				              //doing test
-				t3.endTest();																			              //quitting browser and closing driver instance
+				t3.setUp();																				//setup test case
+				t3.Fbreg();																				//doing test
+				t3.endTest();																			//quitting browser and closing driver instance
 			/*#####################################
-			############	TEST 4	#################
+			############	TEST 4	###############
 			#####################################*/
-			//user interaction																			          //todo wird in dev nicht erstellt
-				t4.setUp();																				              //setup test case
-				t4.Uia();																				                //doing test
-				t4.endTest();																			              //quitting browser and closing driver instance
+			//user interaction																			//todo wird in dev nicht erstellt
+				t4.setUp();																				//setup test case
+				t4.Uia();																				//doing test
+				t4.endTest();																			//quitting browser and closing driver instance
+				if(TestCTDtoREG.failure = true || TestEHSCTD.failure = true || TestFBREG.failure = true || TestUIA.failure = true)
+			    	{
+			    		failure = true;
+					driver.quit();
+					pm.postMessage(e);
+			    	}
 			}
 			catch (Exception e)
 			{
-				failure = true;																			            //unterbricht loop
-				ib.infoBox(e);																			            //infobox for pausing while test crash
-				System.out.println("Fehler in der Main: " + e);									//console message
-				pm.postMessage(e);																		          //posts message in slack
+				failure = true;																			//unterbricht loop
+				ib.infoBox(e);																			//infobox for pausing while test crash
+				System.out.println("Fehler in der Main: " + e);											//console message
+				pm.postMessage(e);																		//posts message in slack
 			}
 		}
 	}
