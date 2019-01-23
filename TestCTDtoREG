@@ -201,8 +201,8 @@ public class TestCTDtoREG																				//Test: create todo to registration
 		/* login/registration variables */
 		firstNamev = "Gordon";												//
 		lastNamev = "Freeman";											//
-		testMailv = "sydtest3@whats2doo.com";								//
-		pwv = "sydtest3";											//
+		testMailv = "testMail";								//
+		pwv = "testPw";											//
 		/* example variables */
 		selectTodov = "Gartenarbeit";										//
 		exampleAddress = "Philip-Rosenthal-Platz 1, 95100 Selb";				//
@@ -383,7 +383,7 @@ public class TestCTDtoREG																				//Test: create todo to registration
 		{
 			failure = true;
 			ib.infoBox(e);																				//infobox for pausing while test crash
-			System.out.println("dafuck, im triggered in CTDtoREG " + e);								//console message
+			System.out.println("im triggered in CTDtoREG " + e);								//console message
 			pm.postMessage(e);																			//posts message in slack
 		}
 	}
