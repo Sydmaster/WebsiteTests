@@ -18,12 +18,9 @@ public class CallTests
 	private static WebDriver driver;
 	private static PostMessage pm;
 	private static Infobox ib;
-	@SuppressWarnings("unused")
 	private static TestEHSCTD t1;
 	private static TestCTDtoREG t2;
-	@SuppressWarnings("unused")
 	private static TestFBREG t3;
-	@SuppressWarnings("unused")
 	private static TestUIA t4;
 	
 	public static void main(String[] args)
