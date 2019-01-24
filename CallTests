@@ -33,10 +33,10 @@ public class CallTests
 		System.setProperty(koDriver, driverPath);														//source and kind of driver
 		pm = new PostMessage(driver);
 		ib = new Infobox();
-		t1 = new TestEHSCTD();
-		t2 = new TestCTDtoREG();
-		t3 = new TestFBREG();
-		t4 = new TestUIA();
+		t1 = new TestEHSCTD(driver);
+		t2 = new TestCTDtoREG(driver);
+		t3 = new TestFBREG(driver);
+		t4 = new TestUIA(driver);
 		
 		while(failure == false)
 		{
