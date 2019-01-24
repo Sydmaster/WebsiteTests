@@ -1,8 +1,6 @@
 package callTests;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import silencio_tryagain_FBREG.TestFBREG;
 import sydtest3_CTDtoREG.TestCTDtoREG;
 import sydtest5_EHSCTD.TestEHSCTD;
@@ -72,6 +70,7 @@ public class CallTests
 				t4.setUp();																				//setup test case
 				t4.Uia();																				//doing test
 				t4.endTest();																			//quitting browser and closing driver instance
+				
 				if(TestCTDtoREG.failure = true || TestEHSCTD.failure = true || TestFBREG.failure = true || TestUIA.failure = true)
 			    	{
 			    		failure = true;
