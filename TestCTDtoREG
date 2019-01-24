@@ -125,11 +125,6 @@ public class TestCTDtoREG																				//Test: create todo to registration
 	public void setUp() throws Exception
 	{
 		/* declare variables */
-		koDriver = "webdriver.chrome.driver";							//kind of driver for driver properties
-		driverPath = "C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/"
-				+ "chromedriver.exe";									//path of driver; alternativ: 	{C:/Users/Admin/eclipse-workspace/WebDriver/Chrome/chromedriver.exe <-- for windows
-																										//								{/usr/lib/chromium-browser/chromedriver} <-- for raspbian}
-		System.setProperty(koDriver, driverPath);														//source and kind of driver
 		driver = new ChromeDriver();									//initialize driver
 		action = new ActionPerform(driver);							//action for real click on element with coordinates
 		wait = new Waits(driver);									//wait type: wait for visibility
