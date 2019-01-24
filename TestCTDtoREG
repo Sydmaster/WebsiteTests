@@ -14,22 +14,19 @@ import utilities.Infobox;
 import utilities.PostMessage;
 import utilities.Waits;
 
-@SuppressWarnings("unused")
 public class TestCTDtoREG																				//Test: create todo to registration
 {
 	/* driver/url variables */
-	WebDriver driver;
-	private static String koDriver;
-	private static String driverPath;
+	private WebDriver driver;
 	private static String baseUrl;
 	private static String emailUrl;
 	private static String profileUrl;
 	/* utilities */
-	private static ActionPerform action;
 	private static Waits wait;
 	private static PostMessage pm;
 	private static Infobox ib;
 	public static boolean failure;
+	public static String exception;
 	/* buttons */
 	private static String createTodobtnx;
 	private static WebElement createTodobtn;
@@ -385,6 +382,7 @@ public class TestCTDtoREG																				//Test: create todo to registration
 		catch (Exception e)
 		{
 			failure = true;
+			exception = e.toString();
 			ib.infoBox(e);																				//infobox for pausing while test crash
 			System.out.println("im triggered in CTDtoREG " + e);								//console message
 			pm.postMessage(e.toString());																			//posts message in slack
