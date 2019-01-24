@@ -23,6 +23,7 @@ public class TestCTDtoREG																				//Test: create todo to registration
 	private static String driverPath;
 	private static String baseUrl;
 	private static String emailUrl;
+	private static String profileUrl;
 	/* utilities */
 	private static ActionPerform action;
 	private static Waits wait;
@@ -136,6 +137,7 @@ public class TestCTDtoREG																				//Test: create todo to registration
 		ib = new Infobox();
 		baseUrl	= "dev.whats2doo.com/";									//stores site url
 		emailUrl = "login.one.com/mail";									//stores mail url
+		profileUrl								= "dev.whats2doo.com/profile";							//
 		driver.manage().window().maximize();															//maximize window - wichtig!
 		failure = false;
 		/* buttons */
@@ -363,9 +365,10 @@ public class TestCTDtoREG																				//Test: create todo to registration
 //		        Thread.sleep(3000);																			//pause execution of current thread
 		        /* archive todo done */
 		    /* delete acc*/
-		    settingsBtn = wait.waitForVisibility(
-					By.xpath(settingsBtnx), 30);							//initiate element with wait for visibility
-		    settingsBtn.click();																		//click on element
+		    driver.get("http://" + profileUrl);
+		    closeBtn2 = wait.waitForVisibility(
+					By.xpath(closeBtnx), 30);								//initiate element with wait for visibility
+		    closeBtn2.click();																			//click on element
 		    deleteaccBtn = wait.waitForVisibility(
 					By.xpath(deleteaccBtnx), 30);							//initiate element with wait for visibility
 		    deleteaccBtn.click();																		//click on element
