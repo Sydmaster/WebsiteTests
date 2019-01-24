@@ -71,7 +71,7 @@ public class CallTests
 				t4.Uia();																				//doing test
 				t4.endTest();																			//quitting browser and closing driver instance
 				
-				if(TestCTDtoREG.failure = true || TestEHSCTD.failure = true || TestFBREG.failure = true || TestUIA.failure = true)
+				if(TestCTDtoREG.failure == true)
 			    	{
 			    		failure = true;
 					driver.quit();
